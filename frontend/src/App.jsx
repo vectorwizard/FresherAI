@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
 import { getCurrentUser } from './apis/user.api'
 
 const App = () => {
@@ -30,8 +30,10 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home setuser={setuser}/>}/>
-        <Route path='/dashboard' element={<Dashboard user={user} setuser={setuser} />}/>
+        <Route path='/' element={ user? <Navigate to="/dashboard" replace/> : 
+          <Home setuser={setuser}/>
+          }/>
+        <Route path='/dashboard' element={ user ? <Dashboard user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
       </Routes>
     </>
   )
