@@ -7,6 +7,7 @@ import Scorer from './pages/Scorer'
 import { getResume } from './apis/resume.api'
 import { useDispatch } from 'react-redux'
 import { setResume } from './redux/resumeSlice'
+import ResumeBuilder from './pages/ResumeBuilder'
 
 const App = () => {
   const [user, setuser] = useState(null)
@@ -49,6 +50,7 @@ const App = () => {
           }/>
         <Route path='/dashboard' element={ user ? <Dashboard user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
         <Route path='/scorer' element={ user ? <Scorer user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
+        <Route path='/resume' element={ user ? <ResumeBuilder user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
       </Routes>
     </>
   )
