@@ -6,7 +6,10 @@ import morgan from "morgan"
 import cookieParser from "cookie-parser"
 import { getCurrentUser } from "./controllers/user.controller.js"
 import { isAuth } from "./middleware/isAuth.js"
+import { proxyWithHeaders } from "./utils/proxyWithHeaders.js"
 dotenv.config()
+
+const PORT = process.env.PORT || 6000
 
 const app = express()
 app.use(express.json())
@@ -21,8 +24,8 @@ app.use(morgan("dev"))
 app.use(cookieParser())
 
 app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL))
+app.use("/api/resume", isAuth, proxyWithHeaders(process.env.RESUME_SERVICE_URL))
 
-const PORT = process.env.PORT || 6000
 
 app.get("/", (req, res)=>{
     res.send("Hello from gateway")
