@@ -16,7 +16,7 @@ const STEPS = [
 
 const TOTAL_STEPS = STEPS.length;
 
-function ResumeBuilder({ user, setUser }) {
+function ResumeBuilder({ user, setuser }) {
     const [currentStep, setCurrentStep] = useState(1)
     const [data, setData] = useState(initialData)
     const [showPreview, setShowPreview] = useState(false)
@@ -39,7 +39,7 @@ function ResumeBuilder({ user, setUser }) {
     const isLastStep = currentStep === STEPS.length
 
     if (showPreview) {
-        return <PreviewResume data={data} user={user} setUser={setUser} onBack={() => setShowPreview(false)} />
+        return <PreviewResume data={data} user={user} setuser={setuser} onBack={() => setShowPreview(false)} />
     }
     return (
         <div className='min-h-screen bg-white text-[#0A0A0A] flex flex-col'>

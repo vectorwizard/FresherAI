@@ -1,5 +1,5 @@
 import express from "express";
-import { GoogleAuth, logOut } from "../controllers/auth.controller.js";
+import { GoogleAuth, logOut, usecoins } from "../controllers/auth.controller.js";
 
 const authRouter = express.Router()
 
@@ -7,5 +7,7 @@ const authRouter = express.Router()
 authRouter.post('/login', GoogleAuth)
 
 authRouter.post('/logout', logOut)
+
+authRouter.post('/use-coins', usecoins)
 
 export default authRouter

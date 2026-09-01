@@ -1,8 +1,9 @@
 import React from 'react'
 import { FiDownload } from 'react-icons/fi'
 import { useReactToPrint } from "react-to-print";
-// import { useCoins } from '../../apis/user.api';
-function DownloadBtn({ docRef, user, setUser }) {
+import { useCoins } from '../../apis/user.api';
+
+function DownloadBtn({ docRef, user, setuser }) {
 
     const handlePdf = useReactToPrint({
         contentRef: docRef,
@@ -12,13 +13,13 @@ function DownloadBtn({ docRef, user, setUser }) {
     const handleDownload = async () => {
         try {
 
-            // const coinResponse = await useCoins({ coins: 10, action: "download-pdf" })
+            const coinResponse = await useCoins({ coins: 10, action: "download-pdf" })
 
             await handlePdf()
-            // setUser((prev) => ({
-            //     ...prev, interviewCoin: coinResponse?.interviewCoin,
-            // }))
 
+            setuser((prev) => ({
+                ...prev, interviewCoin: coinResponse?.interviewCoin,
+            }))
 
 
         } catch (error) {
@@ -26,7 +27,7 @@ function DownloadBtn({ docRef, user, setUser }) {
                 return alert("Not enough Interview Coins.");
             }
             alert(
-                error.response?.data?.message ||
+                error.response?.data?.message || error.message ||
                 "Something went wrong."
             );
 

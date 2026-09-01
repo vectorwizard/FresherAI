@@ -3,7 +3,7 @@ import { FiArrowLeft } from 'react-icons/fi'
 import DownloadBtn from './DownloadBtn'
 import ATSTemplate from './ATSTemplate'
 
-function PreviewResume({ data, onBack, user, setUser }) {
+function PreviewResume({ data, onBack, user, setuser }) {
     const resumeRef = useRef(null)
     const [scale, setScale] = useState(1)
 
@@ -47,7 +47,7 @@ function PreviewResume({ data, onBack, user, setUser }) {
                             <span className='hidden sm:block'>Back to Edit</span>
 
                         </button>
-                        <DownloadBtn docRef={resumeRef} user={user} setUser={setUser} />
+                        <DownloadBtn docRef={resumeRef} user={user} setuser={setuser} />
                     </div>
 
 

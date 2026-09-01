@@ -7,7 +7,7 @@ import api from '../utils/axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { setResume } from '../redux/resumeSlice'
 import { PolarAngleAxis, RadialBar, RadialBarChart } from "recharts"
-// import { useCoins } from '../apis/user.api'
+import { useCoins } from '../apis/user.api'
 
 
 const ScoreRing = ({ score }) => {
@@ -77,7 +77,7 @@ const Tag = ({ text, color }) => {
 }
 
 
-const Scorer = ({ user, setUser }) => {
+const Scorer = ({ user, setuser }) => {
 
     const [file, setFile] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -90,6 +90,13 @@ const Scorer = ({ user, setUser }) => {
         }
         try {
             setLoading(true)
+
+            const coinResponse = await useCoins({coins: 10, action: "resume scorer"})
+
+            setuser((prev)=>({
+                ...prev, interviewCoin: coinResponse?.interviewCoin
+            }))
+
             const formData = new FormData()
             formData.append("resume", file)
 
