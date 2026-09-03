@@ -22,6 +22,6 @@ app.get("/", (req, res)=>{
 })
 
 app.listen(PORT, ()=>{
-    console.log(`Auth service started on ${PORT}`)
+    console.log(`Resume service started on ${PORT}`)
     connectDB()
 })
