@@ -51,7 +51,7 @@ const Home = ({ setuser }) => {
 
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }} className="text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4 text-[#0A0A0A] [text-shadow:0_4px_24px_rgba(0,0,0,0.12)]">
             Job Interviews<br />
-            <span className="text-black/30">Don't Have to Stuck</span><br />
+            <span className="text-black/30">Don't Have to Suck</span><br />
             Anymore!
           </motion.h1>
 
