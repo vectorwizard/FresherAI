@@ -26,6 +26,7 @@ app.use(cookieParser())
 app.use("/api/auth", proxy(process.env.AUTH_SERVICE_URL))
 app.use("/api/resume", isAuth, proxyWithHeaders(process.env.RESUME_SERVICE_URL))
 app.use("/api/interview", isAuth, proxyWithHeaders(process.env.INTERVIEW_SERVICE_URL))
+app.use("/api/roadmap", isAuth, proxyWithHeaders(process.env.ROADMAP_SERVICE_URL))
 
 
 app.get("/", (req, res)=>{
