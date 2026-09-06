@@ -82,7 +82,7 @@ export const usecoins = async (req, res) => {
 
         const { coins, action } = req.body
 
-        if (!coins || coins<=0) {
+        if (!coins || coins <= 0) {
             return res.status(400).json({
                 success: false,
                 message: "Coins are required"
@@ -130,3 +130,68 @@ export const usecoins = async (req, res) => {
         })
     }
 }
+
+export const addCoins = async (req, res) => {
+    try {
+        const sessionId = req.cookies?.session;
+
+        const session = await redis.get(`session:${sessionId}`);
+
+        if (!session) {
+            return res.status(401).json({
+                success: false,
+                message: "Session expired",
+            });
+        }
+
+        const sessionData = JSON.parse(session);
+
+        const { coins } = req.body;
+
+        if (!coins || coins <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Valid coins are required",
+            });
+        }
+
+        const user = await User.findById(sessionData.userId);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        user.interviewCoin += Number(coins);
+
+        await user.save();
+
+        // Update Redis Session
+        await redis.set(
+            `session:${sessionId}`,
+            JSON.stringify({
+                userId: user._id,
+                name: user.name,
+                email: user.email,
+                interviewCoin: user.interviewCoin,
+            }),
+            "EX",
+            60 * 60 * 24 * 7
+        );
+
+        return res.status(200).json({
+            success: true,
+            message: "Coins added successfully",
+            interviewCoin: user.interviewCoin,
+        });
+    } catch (error) {
+        console.log(error);
+
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};

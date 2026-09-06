@@ -12,6 +12,7 @@ import InterviewStart from './pages/InterviewStart'
 import InterviewPage from './pages/InterviewPage'
 import InterviewReport from './pages/InterviewReport'
 import Roadmap from './pages/Roadmap'
+import Billing from './pages/Billing'
 
 const App = () => {
   const [user, setuser] = useState(null)
@@ -59,6 +60,7 @@ const App = () => {
         <Route path='/interview/:id' element={ user ? <InterviewPage user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
         <Route path='/interview/:id/report' element={ user ? <InterviewReport user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
         <Route path='/roadmap' element={ user ? <Roadmap user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
+        <Route path='/billing' element={ user ? <Billing user={user} setuser={setuser} /> : <Navigate to="/" replace/> }/>
       </Routes>
     </>
   )
