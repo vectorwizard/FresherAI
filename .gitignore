@@ -43,3 +43,5 @@ Thumbs.db
 # Optional Docker volumes / local data
 docker-data/
 data/
+
+**/serviceAccountKey.json
