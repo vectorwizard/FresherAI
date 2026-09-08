@@ -32,8 +32,8 @@ export const GoogleAuth = async (req, res) => {
 
         res.cookie("session", sessionId, {
             httpOnly: true,
-            sameSite: "strict",
-            secure: false,
+            sameSite: "none",
+            secure: true,
             maxAge: 7 * 3600 * 24 * 1000
         })
         return res.status(200).json({ success: true, user })
@@ -52,8 +52,8 @@ export const logOut = async (req, res) => {
 
         res.clearCookie("session", {
             httpOnly: true,
-            sameSite: "strict",
-            secure: false
+            sameSite: "none",
+            secure: true
         })
 
         return res.status(200).json({
