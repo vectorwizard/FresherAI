@@ -1,7 +1,7 @@
 import { resumeAgent } from "../agents/resume.agents.js"
 import extractText from "../config/pdf.js"
 import Resume from "../models/resume.model.js"
-import redis from "../../../shared/redis/redis.js"
+import redis from "../shared/redis/redis.js"
 import fs from "fs/promises"
 
 export const uploadResume = async (req, res) => {

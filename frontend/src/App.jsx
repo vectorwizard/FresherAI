@@ -41,7 +41,6 @@ const App = () => {
     return(
       <div className='fixed top-0 left-0 w-full z-[9999]'>
         <div className='h-1 bg-black animate-pulse w-full'>
-
         </div>
       </div>
     )
