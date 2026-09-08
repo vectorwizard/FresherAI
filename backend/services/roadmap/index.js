@@ -17,6 +17,10 @@ app.use(express.json())
 
 app.use("/", router)
 
+app.get("/", (req, res)=>{
+    res.send("Hello from Roadmap-service")
+})
+
 app.listen(PORT, ()=>{
     console.log(`Roadmap service started on ${PORT}`)
     connectDB()
