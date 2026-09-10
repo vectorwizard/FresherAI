@@ -4,6 +4,8 @@ FresherAI is an AI-powered career preparation platform for students and freshers
 
 The experience is built around a simple idea: make interview practice accessible, measurable, and personalized.
 
+**Live App:** [fresher-ai-two.vercel.app](https://fresher-ai-two.vercel.app/)
+
 ## Overview
 
 This repository is structured as a monorepo with two main areas:
